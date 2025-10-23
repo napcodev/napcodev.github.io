@@ -1,85 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Napco iLock SDK Docs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NapcoILockSDK</title>
+  <meta name="description" content="Light theme developer overview page for NapcoILockSDK with docs links for iOS and Android." />
   <style>
-    :root {
-      --background: #f8f9fa;
-      --text-color: #1f2937;
-      --accent-color: #c8102e; /* Napco-style red */
-      --accent-hover: #a10d25;
-      --container-bg: #ffffff;
+    :root{
+      --bg: #f7fafc;            /* page background */
+      --card: #ffffff;          /* surfaces */
+      --text: #1f2937;          /* gray-800 */
+      --muted: #6b7280;         /* gray-500 */
+      --border: #e5e7eb;        /* gray-200 */
+      --primary: #2563eb;       /* blue-600 */
+      --primary-2: #1d4ed8;     /* blue-700 */
+      --accent: #059669;        /* emerald-600 */
+      --radius: 16px;
+      --shadow: 0 10px 24px rgba(17,24,39,.08);
+      --code-bg: #f3f4f6;       /* gray-100 */
     }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text); background:var(--bg); line-height:1.6;
+    }
+    .container{max-width:1120px;margin:0 auto;padding:24px}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    header.hero{background:linear-gradient(180deg,#fff, #f8fafc);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);padding:36px 24px}
+    h1{margin:0 0 8px;font-size:clamp(28px,4vw,44px);letter-spacing:.2px}
+    .subtitle{color:var(--muted);font-size:clamp(14px,2vw,18px);margin:0}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background);
-      color: var(--text-color);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .btn{appearance:none;border:1px solid var(--border);background:#fff;color:var(--primary);padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .btn.secondary{background:#f8fafc;color:var(--primary-2)}
 
-    .container {
-      background-color: var(--container-bg);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      max-width: 500px;
-      width: 100%;
-    }
+    .layout{display:grid;grid-template-columns:1fr;gap:20px;margin-top:24px}
+    @media(min-width:980px){.layout{grid-template-columns:1fr}}
 
-    h1 {
-      font-size: 1.9rem;
-      margin-bottom: 30px;
-      font-weight: 600;
-      color: var(--accent-color);
-    }
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:20px}
 
-    a.button {
-      display: block;
-      margin: 15px 0;
-      padding: 14px 24px;
-      border-radius: 8px;
-      background-color: var(--accent-color);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
+    section{scroll-margin-top:90px}
+    h2{margin:0 0 8px;font-size:clamp(20px,2.4vw,28px)}
+    p{margin:0 0 12px}
+    ul{margin:0 0 12px 18px} li{margin:6px 0}
 
-    a.button:hover {
-      background-color: var(--accent-hover);
-    }
+    .kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 2px}
+    @media(min-width:720px){.kpi{grid-template-columns:repeat(4,minmax(0,1fr))}}
+    .pill{border:1px solid var(--border);border-radius:999px;padding:10px 14px;background:#f9fafb;color:#374151;font-size:14px}
 
-    @media (max-width: 500px) {
-      .container {
-        padding: 30px 20px;
-      }
-    }
+    pre{margin:12px 0 16px;background:var(--code-bg);border:1px solid var(--border);padding:14px;border-radius:12px;overflow:auto}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";font-size:13px}
+
+    footer{margin:28px 0 10px;text-align:center;color:var(--muted)}
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Napco iLock SDK Documentation</h1>
-    <a class="button" href="https://napcodev.github.io/ilocksdkdocs/documentation/napcoilocksdk" target="_blank">
-      iOS SDK Documentation
-    </a>
-    <a class="button" href="https://napcodev.github.io/ilocksdkandroiddocs" target="_blank">
-      Android SDK Documentation
-    </a>
+    <header class="hero">
+      <h1>NapcoILockSDK</h1>
+      <p class="subtitle">Bluetooth Smart Lock SDK for iOS & Android — connect, control, and monitor Napco locks with minimal effort.</p>
+      <div class="cta">
+        <a class="btn secondary" href="https://napcodev.github.io/ilocksdkdocs/documentation/napcoilocksdk/" target="_blank" rel="noopener noreferrer">iOS Docs</a>
+        <a class="btn" href="https://napcodev.github.io/ilocksdkandroiddocs/" target="_blank" rel="noopener noreferrer">Android Docs</a>
+      </div>
+    </header>
+
+    <div class="layout">
+      <main>
+        <section id="overview" class="card pad" aria-labelledby="h-overview">
+          <h2 id="h-overview">Overview</h2>
+          <p><strong>NapcoILockSDK</strong> provides a comprehensive framework for connecting, controlling, and managing Napco smart locks using Bluetooth in your mobile app. It handles credential decoding, lock operations, and status monitoring so you can focus on your app’s UI and business logic.</p>
+          <p>The SDK simplifies the integration of smart locks into your applications by providing a set of tools and APIs for connection, control, and interaction with locks. Key components include the <em>Credential</em> struct for handling authentication data, <em>ImportUtility</em> for importing and decoding credentials, the <em>iLock</em> class for managing lock operations, and enums for lock states. With delegate-driven communication, you can monitor lock status, RSSI, and handle operational mismatches effectively. The SDK is designed for flexibility and can be integrated into smart home or access control systems.</p>
+          <div class="kpi">
+            <div class="pill">BLE connection & scanning</div>
+            <div class="pill">Credential decoding</div>
+            <div class="pill">Lock/Unlock/Toggle</div>
+            <div class="pill">Status & RSSI monitoring</div>
+          </div>
+        </section>
+
+        <section id="licensing" class="card pad">
+          <h2>Licensing &amp; Access</h2>
+          <p>To use <strong>NapcoILockSDK</strong> in your mobile app, you must obtain an <strong>AppID</strong> from Napco. Please contact Napco to request access and provisioning details.</p>
+          <p class="muted">When you reach out, have the following ready to speed up approval:</p>
+          <ul>
+            <li>Company name and primary technical contact (name &amp; email)</li>
+            <li>Platform &amp; identifiers: iOS <code>Bundle Identifier</code> and/or Android <code>ApplicationId</code> (package name)</li>
+            <li>App name, intended use case, and target deployment (pilot, production)</li>
+            <li>Environment needs (Development and/or Production AppIDs)</li>
+            <li>Any test device details (optional): model, OS version</li>
+          </ul>
+          <p>After approval, Napco will issue your AppID. You will reference this AppID during SDK initialization, and it may be scoped per environment. Access may be subject to additional agreements or security validation.</p>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      © Napco — NapcoILockSDK Developer Guide
+    </footer>
   </div>
 </body>
 </html>
